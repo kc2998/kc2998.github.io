@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kevin W. Chen</title>
+  <meta name="description" content="Kevin W. Chen, MS in Data Science at Columbia University. Machine learning and computational biology for neurodegenerative disease.">
+  <meta property="og:title" content="Kevin W. Chen">
+  <meta property="og:description" content="MS in Data Science at Columbia University. Machine learning and single cell genomics.">
+  <meta property="og:url" content="https://kc2998.github.io">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbfbfa;
+      --surface: #ffffff;
+      --text: #1d1d1f;
+      --muted: #5f6368;
+      --line: #e6e6e3;
+      --accent: #1d4ed8;
+      --accent-soft: #e8eefc;
+      --tag: #f1f1ef;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111214;
+        --surface: #1a1b1e;
+        --text: #ececec;
+        --muted: #a1a1a6;
+        --line: #2b2c30;
+        --accent: #7aa2ff;
+        --accent-soft: #1d2540;
+        --tag: #24252a;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Navigation */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 920px; margin: 0 auto; padding: 14px 20px;
+      display: flex; align-items: center; gap: 24px;
+    }
+    .nav-name { font-weight: 700; color: var(--text); white-space: nowrap; }
+    .nav-links { display: flex; gap: 18px; overflow-x: auto; scrollbar-width: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; white-space: nowrap; }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    main { max-width: 920px; margin: 0 auto; padding: 0 20px 64px; }
+    section { padding-top: 56px; }
+    h2 {
+      font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin: 0 0 20px; font-weight: 600;
+    }
+
+    /* Header */
+    .hero {
+      display: grid; grid-template-columns: 180px 1fr; gap: 36px;
+      align-items: center; padding-top: 56px;
+    }
+    .photo {
+      width: 180px; height: 180px; border-radius: 50%;
+      object-fit: cover; background: var(--accent-soft);
+      border: 1px solid var(--line);
+    }
+    .hero h1 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 40px; line-height: 1.15; margin: 0 0 6px;
+    }
+    .tagline { color: var(--muted); font-size: 18px; margin: 0 0 14px; }
+    .hero p { margin: 0 0 14px; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .links a {
+      font-size: 14px; font-weight: 500; padding: 6px 14px;
+      border: 1px solid var(--line); border-radius: 999px;
+      background: var(--surface); color: var(--text);
+    }
+    .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* Skills */
+    .skills { display: grid; gap: 10px; }
+    .skill-row { display: grid; grid-template-columns: 170px 1fr; gap: 12px; }
+    .skill-row b { font-weight: 600; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tags span { background: var(--tag); padding: 2px 10px; border-radius: 6px; font-size: 14px; }
+
+    /* Timeline entries (education, research, work) */
+    .entry {
+      display: grid; grid-template-columns: 1fr auto; gap: 4px 16px;
+      padding: 18px 0; border-top: 1px solid var(--line);
+    }
+    .entry:first-of-type { border-top: none; padding-top: 0; }
+    .entry h3 { font-size: 17px; margin: 0; }
+    .entry .date { color: var(--muted); font-size: 14px; white-space: nowrap; }
+    .entry .sub { grid-column: 1 / -1; color: var(--muted); font-size: 15px; }
+    .entry ul { grid-column: 1 / -1; margin: 8px 0 0; padding-left: 20px; }
+    .entry li { margin-bottom: 4px; }
+
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .card .thumb {
+      aspect-ratio: 16 / 9; background: var(--accent-soft);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-weight: 600; font-size: 14px;
+    }
+    .card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .card .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .card h3 { font-size: 16px; margin: 0; }
+    .card p { margin: 0; font-size: 14px; color: var(--muted); flex: 1; }
+    .card .card-links { font-size: 14px; font-weight: 500; }
+
+    /* Publications */
+    .pub-group { margin-bottom: 28px; }
+    .pub-group h3 { font-size: 15px; margin: 0 0 10px; }
+    .pub { padding: 12px 0; border-top: 1px solid var(--line); }
+    .pub:first-of-type { border-top: none; padding-top: 0; }
+    .pub .title { font-weight: 600; }
+    .pub .authors { font-size: 14px; color: var(--muted); }
+    .pub .authors b { color: var(--text); }
+    .pub .venue { font-size: 14px; }
+    .badge {
+      display: inline-block; font-size: 12px; font-weight: 600;
+      padding: 1px 8px; border-radius: 6px; margin-left: 6px;
+      background: var(--accent-soft); color: var(--accent);
+    }
+
+    footer {
+      max-width: 920px; margin: 0 auto; padding: 24px 20px 40px;
+      color: var(--muted); font-size: 13px; border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 640px) {
+      .hero { grid-template-columns: 1fr; text-align: left; gap: 20px; }
+      .photo { width: 120px; height: 120px; }
+      .hero h1 { font-size: 32px; }
+      .skill-row { grid-template-columns: 1fr; gap: 4px; }
+      .entry { grid-template-columns: 1fr; }
+      .nav-name { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">Kevin W. Chen</a>
+    <div class="nav-links">
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#skills">Skills</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============ HEADER ============ -->
+  <header class="hero">
+    <!-- TODO: upload your photo to an "images" folder as profile.jpg -->
+    <img class="photo" src="images/profile.jpg" alt="Kevin W. Chen">
+    <div>
+      <h1>Kevin W. Chen</h1>
+      <p class="tagline">MS in Data Science, Columbia University</p>
+      <!-- TODO: rewrite these two sentences in your own words -->
+      <p>
+        I build machine learning and statistical methods for large scale biological data.
+        From 2022 to 2025 I worked in the De Jager Lab at Columbia University Irving Medical Center,
+        analyzing single cell and single nucleus transcriptomics to study Alzheimer's disease.
+      </p>
+      <div class="links">
+        <a href="mailto:kc2998@cumc.columbia.edu">Email</a>
+        <!-- TODO: replace # with your real links -->
+        <a href="https://github.com/kc2998">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Google Scholar</a>
+        <a href="files/Kevin_Chen_CV.pdf">CV</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ EDUCATION ============ -->
+  <section id="education">
+    <h2>Education</h2>
+
+    <div class="entry">
+      <h3>Columbia University</h3>
+      <span class="date">2025 – 2027</span><!-- TODO: confirm years -->
+      <div class="sub">M.S. in Data Science, Data Science Institute</div>
+    </div>
+
+    <div class="entry">
+      <h3>Stony Brook University</h3>
+      <span class="date">20XX – 20XX</span><!-- TODO: years -->
+      <div class="sub">B.S. in [Major], College of Arts and Sciences</div><!-- TODO: degree -->
+    </div>
+  </section>
+
+  <!-- ============ RESEARCH EXPERIENCE ============ -->
+  <section id="research">
+    <h2>Research Experience</h2>
+
+    <div class="entry">
+      <h3>De Jager Lab, Columbia University Irving Medical Center</h3>
+      <span class="date">2022 – 2025</span>
+      <div class="sub">
+        <!-- TODO: your exact title -->
+        Research Assistant, Center for Translational and Computational Neuroimmunology.
+        PI: <a href="https://www.neurology.columbia.edu/profile/philip-l-de-jager-md">Philip L. De Jager</a>
+      </div>
+      <!-- TODO: edit these bullets to match what you actually did -->
+      <ul>
+        <li>Analyzed single nucleus RNA sequencing data from 52 postmortem brains, identifying APOE ε4 associated changes in astrocyte focal adhesion signaling.</li>
+        <li>Contributed to cell to cell signaling analysis of a pathologic astrocyte state linked to cognitive decline across 869 brains.</li>
+        <li>Validated a 23 factor model of human microglial gene expression built from more than 400,000 live microglia.</li>
+        <li>Corresponding author on a book chapter reviewing epigenetic mechanisms in Alzheimer disease (Elsevier, 2026).</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <h3>Sheng Lab, Zuckerman Mind Brain Behavior Institute, Columbia University</h3>
+      <span class="date">2019</span><!-- TODO: confirm dates -->
+      <div class="sub">
+        Research Intern. Mentor: Zizhang Sheng
+      </div>
+      <ul>
+        <li>Helped build cAb-Rep, a curated database of human B cell antibody repertoires for studying antibody diversity and prevalence.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <!-- TODO: replace with 3 to 4 real projects. Put screenshots in images/ -->
+    <div class="projects">
+
+      <div class="card">
+        <div class="thumb">Project image</div>
+        <div class="body">
+          <h3>Project One</h3>
+          <p>One sentence on what it does and the main result.</p>
+          <div class="card-links"><a href="#">GitHub →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="thumb">Project image</div>
+        <div class="body">
+          <h3>Project Two</h3>
+          <p>One sentence on what it does and the main result.</p>
+          <div class="card-links"><a href="#">GitHub →</a></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="thumb">Project image</div>
+        <div class="body">
+          <h3>Project Three</h3>
+          <p>One sentence on what it does and the main result.</p>
+          <div class="card-links"><a href="#">GitHub →</a></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PUBLICATIONS ============ -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pub-group">
+      <h3>Book Chapters</h3>
+      <div class="pub">
+        <div class="title">Epigenetic mechanisms in Alzheimer disease <span class="badge">Corresponding author</span></div>
+        <!-- TODO: full author list from your chapter PDF -->
+        <div class="authors"><b>Chen KW</b>, et al.</div>
+        <div class="venue">In: Szyf M, Nemoda Z, eds. <i>Epigenetic Mechanisms in Brain Physiology and Disorders</i>, Chapter 17. Elsevier, 2026 (in press).</div>
+      </div>
+    </div>
+
+    <div class="pub-group">
+      <h3>Journal Articles</h3>
+      <div class="pub">
+        <div class="title"><a href="https://doi.org/10.3389/fimmu.2019.02365">cAb-Rep: A Database of Curated Antibody Repertoires for Exploring Antibody Diversity and Predicting Antibody Prevalence</a></div>
+        <div class="authors">Guo Y, <b>Chen K</b>, Kwong PD, Shapiro L, Sheng Z.</div>
+        <div class="venue"><i>Frontiers in Immunology</i>, 10:2365, 2019.</div>
+      </div>
+    </div>
+
+    <div class="pub-group">
+      <h3>Preprints</h3>
+      <div class="pub">
+        <div class="title"><a href="https://doi.org/10.1101/2025.05.21.25328040">Single-nucleus multiomics in brains from Hispanic individuals reveal APOE-ε4-driven disruption of focal adhesion signaling in the presence of cerebrovascular pathology</a></div>
+        <div class="authors">Yilmaz E, <b>Chen KW</b>, Cakir EÖ, Bhattarai P, Liu M, Ciener BL, Qiao M, Lantigua R, Medrano M, Rivera D, Piriz AL, De Jager P, Bartolini F, Ma Y, Teich AF, Lee AJ, Reyes-Dumeyer D, Vardarajan BN, Mayeux R, Kizil C.</div>
+        <div class="venue"><i>medRxiv</i>, 2025. <span class="badge">Under review</span></div>
+      </div>
+      <div class="pub">
+        <div class="title"><a href="https://doi.org/10.1101/2025.02.24.639868">PLXNB1 and other signaling drives a pathologic astrocyte state contributing to cognitive decline in Alzheimer's Disease</a></div>
+        <div class="authors">Comandante-Lou N, Lama T, <b>Chen K</b>, Zhang J, Hu B, Liu S, Heuer S, Brennand KJ, Schneider J, Barnes L, Zhang B, Wang M, Zou H, Friedel RH, Ma Y, Young-Pearse T, Li A, Fujita M, Bennett D, Zhang Y, Menon V, Klein HU, Taga M, De Jager PL.</div>
+        <div class="venue"><i>bioRxiv</i>, 2025. <span class="badge">In revision</span></div>
+      </div>
+      <div class="pub">
+        <div class="title"><a href="https://doi.org/10.1101/2025.03.27.641500">A factor-based analysis of individual human microglia uncovers regulators of an Alzheimer-related transcriptional signature</a></div>
+        <div class="authors">Marshe VS, Tuddenham JF, <b>Chen K</b>, Chiu R, Haage VC, Ma Y, Lee AJ, Shneider NA, Agin-Liebes JP, Alcalay RN, Teich AF, Canoll P, Riley CS, Keene D, Schneider JA, Bennett DA, Menon V, Taga M, Klein HU, Olah M, Fujita M, Zhang Y, Sims PA, De Jager PL.</div>
+        <div class="venue"><i>bioRxiv</i>, 2025.</div>
+      </div>
+    </div>
+
+    <div class="pub-group">
+      <h3>Conference Abstracts</h3>
+      <div class="pub">
+        <div class="title">Adhesion and Guidance Signaling Drive the Spatially Patterned Emergence of an Astrocyte State Contributing to Cognitive Decline in Alzheimer's Disease</div>
+        <div class="authors">Comandante-Lou N, <b>Chen KW</b>, et al.</div>
+        <div class="venue"><i>BMES 2026 Annual Meeting</i>.</div>
+      </div>
+      <div class="pub">
+        <div class="title"><a href="https://doi.org/10.1002/alz70861_108184">Cell-cell signaling drives a pathologic astrocyte state contributing to cognitive decline in Alzheimer's Disease</a></div>
+        <div class="authors">Comandante-Lou N, Lama TD, <b>Chen KW</b>, Zhang J, et al.</div>
+        <div class="venue"><i>Alzheimer's &amp; Dementia</i>, 21(Suppl 7):e108184, 2025.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <!-- TODO: edit to match what you actually use -->
+    <div class="skills">
+      <div class="skill-row"><b>Languages</b><div class="tags"><span>Python</span><span>R</span><span>SQL</span><span>Bash</span></div></div>
+      <div class="skill-row"><b>ML and Statistics</b><div class="tags"><span>PyTorch</span><span>scikit-learn</span><span>Statistical modeling</span><span>Dimensionality reduction</span></div></div>
+      <div class="skill-row"><b>Genomics</b><div class="tags"><span>scRNA-seq</span><span>snRNA-seq</span><span>Seurat</span><span>Scanpy</span></div></div>
+      <div class="skill-row"><b>Tools</b><div class="tags"><span>Git</span><span>HPC / SLURM</span><span>Docker</span><span>Jupyter</span></div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Kevin W. Chen · Last updated October 2026
+</footer>
+
+</body>
+</html>
