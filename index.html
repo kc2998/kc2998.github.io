@@ -203,35 +203,45 @@
 
     <div class="entry">
       <h3>Columbia University</h3>
-      <span class="date">2025 – 2027</span><!-- TODO: confirm years -->
+      <span class="date">Aug. 2025 – Dec. 2026</span>
       <div class="sub">M.S. in Data Science, Data Science Institute</div>
     </div>
 
     <div class="entry">
       <h3>Stony Brook University</h3>
-      <span class="date">20XX – 20XX</span><!-- TODO: years -->
-      <div class="sub">B.S. in [Major], College of Arts and Sciences</div><!-- TODO: degree -->
+      <span class="date">Aug. 2018 – May 2022</span>
+      <div class="sub">B.S. in Applied Mathematics and Statistics, B.S. in Biology, College of Engineering</div><!-- TODO: degree -->
     </div>
   </section>
 
-  <!-- ============ RESEARCH EXPERIENCE ============ -->
-  <section id="research">
-    <h2>Research Experience</h2>
+  <!-- ============ PROFESSIONAL EXPERIENCE ============ -->
+  <section id="professional-experience">
+    <h2>Professional Experience</h2>
 
     <div class="entry">
+      <h3>SiteRx</h3>
+      <span class="date">Sep. 2026 – Present</span>
+      <div class="sub">Data Science Capstone, Columbia University (ENGI E4800)</div>
+      <ul>
+        <li>Partner with SiteRx's heads of data science and data engineering to develop NLP methods that extract key clinical information from unstructured electronic health records.</li>
+        <li>Translate pharmaceutical clients' business questions into structured data extraction tasks and evaluation criteria.</li>
+        <li>Evaluate transformer based models, large language models, and agentic AI approaches for extracting and contextualizing clinical information from EHR text.</li>
+      </ul>
+    </div>
+    
+    <div class="entry">
       <h3>De Jager Lab, Columbia University Irving Medical Center</h3>
-      <span class="date">2022 – 2025</span>
+      <span class="date">Nov. 2022 – Aug. 2026</span>
       <div class="sub">
-        <!-- TODO: your exact title -->
         Research Assistant, Center for Translational and Computational Neuroimmunology.
         PI: <a href="https://www.neurology.columbia.edu/profile/philip-l-de-jager-md">Philip L. De Jager</a>
       </div>
       <!-- TODO: edit these bullets to match what you actually did -->
       <ul>
-        <li>Analyzed single nucleus RNA sequencing data from 52 postmortem brains, identifying APOE ε4 associated changes in astrocyte focal adhesion signaling.</li>
-        <li>Contributed to cell to cell signaling analysis of a pathologic astrocyte state linked to cognitive decline across 869 brains.</li>
-        <li>Validated a 23 factor model of human microglial gene expression built from more than 400,000 live microglia.</li>
-        <li>Corresponding author on a book chapter reviewing epigenetic mechanisms in Alzheimer disease (Elsevier, 2026).</li>
+        <li>Led quality control and processing of the lab's human brain single nucleus multiome data (242 brains, 1.5M nuclei), producing a valuable dataset used across 3 lab studies and supporting collaborating labs' analyses; presented the pipelines to department chairs.</li>
+        <li>Developed machine learning models that estimate brain cell type proportions from bulk DNA methylation data, unlocking over three thousand archived human DNAm profiles for cell type resolved analysis.</li>
+        <li>Designed statistical pipelines to identify key modifying and mediating genes on <i>APOE</i> ε4, the strongest genetic risk for Alzheimer's disease by leveraging single nucleus RNA brain profiles for 424 human donors.</li>
+        <li>Presented research at the Alzheimer's Association International Conference (AAIC), representing Columbia University Irving Medical Center.</li>
       </ul>
     </div>
 
@@ -249,53 +259,40 @@
 
   <!-- ============ PROJECTS ============ -->
   <section id="projects">
-    <h2>Projects</h2>
+    <h2>Active Projects</h2>
     <!-- TODO: replace with 3 to 4 real projects. Put screenshots in images/ -->
     <div class="projects">
 
       <div class="card">
-        <div class="thumb">Project image</div>
+        <div class="thumb"><img src="images/becca.png" alt="BECCA benchmark results"></div>
         <div class="body">
-          <h3>Project One</h3>
-          <p>One sentence on what it does and the main result.</p>
-          <div class="card-links"><a href="#">GitHub →</a></div>
+          <h3>BECCA</h3>
+          <p>A Python and R package that estimates 7 brain cell type proportions from bulk DNA methylation. Trained on 446 donors with matched single nucleus labels, it outperforms four published methods on every cell type in held out testing.</p>
+          <div class="card-links"><a href="https://github.com/kc2998/BECCA">GitHub →</a></div>
         </div>
       </div>
 
       <div class="card">
-        <div class="thumb">Project image</div>
+        <div class="thumb"><img src="images/siterx.png" alt="SiteRx NLP project"></div>
         <div class="body">
-          <h3>Project Two</h3>
-          <p>One sentence on what it does and the main result.</p>
-          <div class="card-links"><a href="#">GitHub →</a></div>
+          <h3>SiteRx NLP</h3>
+          <p>Turning free text clinical notes into structured, searchable data, surfacing patient details that structured EHR fields miss.</p>
+          <div class="card-links"><span style="color: var(--muted);">Industry capstone · Code private</span></div>
         </div>
       </div>
-
-      <div class="card">
-        <div class="thumb">Project image</div>
-        <div class="body">
-          <h3>Project Three</h3>
-          <p>One sentence on what it does and the main result.</p>
-          <div class="card-links"><a href="#">GitHub →</a></div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ============ PUBLICATIONS ============ -->
   <section id="publications">
     <h2>Publications</h2>
 
     <div class="pub-group">
-      <h3>Book Chapters</h3>
-      <div class="pub">
-        <div class="title">Epigenetic mechanisms in Alzheimer disease <span class="badge">Corresponding author</span></div>
-        <!-- TODO: full author list from your chapter PDF -->
-        <div class="authors"><b>Chen KW</b>, et al.</div>
-        <div class="venue">In: Szyf M, Nemoda Z, eds. <i>Epigenetic Mechanisms in Brain Physiology and Disorders</i>, Chapter 17. Elsevier, 2026 (in press).</div>
-      </div>
-    </div>
+  <h3>Book Chapters</h3>
+  <div class="pub">
+    <div class="title">Epigenetic mechanisms in brain development and in neurodegeneration <span class="badge">Corresponding author</span></div>
+    <div class="authors">Ma Y, <b>Chen KW</b>, De Jager PL.</div>
+    <div class="venue">In: Szyf M, Nemoda Z, eds. <i>Epigenetic Mechanisms in Brain Physiology and Disorders</i>, Chapter 20. Elsevier, 2026 (in press).</div>
+  </div>
+</div>
 
     <div class="pub-group">
       <h3>Journal Articles</h3>
