@@ -147,6 +147,19 @@
       background: var(--accent-soft); color: var(--accent);
     }
 
+    /* Publication thumbnails (only on papers with class "has-thumb") */
+    .pub.has-thumb {
+      display: grid; grid-template-columns: 160px 1fr; gap: 16px; align-items: start;
+    }
+    .pub-thumb {
+      display: flex; align-items: center; justify-content: center;
+      width: 160px; aspect-ratio: 4 / 3; border-radius: 8px; overflow: hidden;
+      background: var(--accent-soft); border: 1px solid var(--line);
+      color: var(--accent); font-size: 13px; font-weight: 600;
+    }
+    .pub-thumb:hover { text-decoration: none; border-color: var(--accent); }
+    .pub-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
     footer {
       max-width: 920px; margin: 0 auto; padding: 24px 20px 40px;
       color: var(--muted); font-size: 13px; border-top: 1px solid var(--line);
@@ -159,6 +172,8 @@
       .skill-row { grid-template-columns: 1fr; gap: 4px; }
       .entry { grid-template-columns: 1fr; }
       .nav-name { display: none; }
+      .pub.has-thumb { grid-template-columns: 1fr; }
+      .pub-thumb { width: 100%; max-width: 320px; }
     }
   </style>
 </head>
@@ -232,9 +247,10 @@
 
     <div class="entry">
       <h3>De Jager Lab, Columbia University Irving Medical Center</h3>
-      <span class="date">Nov. 2022 – Aug. 2025</span>
+      <span class="date">Nov. 2022 – Present</span>
       <div class="sub">
-        Research Assistant, Center for Translational and Computational Neuroimmunology.
+        Research Assistant (Nov. 2022 – Aug. 2025) · Volunteer Researcher (Aug. 2025 – Present)<br>
+        Center for Translational and Computational Neuroimmunology.
         PI: <a href="https://www.neurology.columbia.edu/profile/philip-l-de-jager-md">Philip L. De Jager</a>
       </div>
       <ul>
@@ -286,6 +302,8 @@
   </section>
 
   <!-- ============ PUBLICATIONS ============ -->
+  <!-- Thumbnails: upload images to images/pubs/ using the file names below.
+       Until a file exists, a tinted placeholder box shows instead. -->
   <section id="publications">
     <h2>Publications</h2>
 
@@ -300,29 +318,52 @@
 
     <div class="pub-group">
       <h3>Journal Articles</h3>
-      <div class="pub">
-        <div class="title"><a href="https://doi.org/10.3389/fimmu.2019.02365">cAb-Rep: A Database of Curated Antibody Repertoires for Exploring Antibody Diversity and Predicting Antibody Prevalence</a></div>
-        <div class="authors">Guo Y, <b>Chen K</b>, Kwong PD, Shapiro L, Sheng Z.</div>
-        <div class="venue"><i>Frontiers in Immunology</i>, 10:2365, 2019.</div>
+      <div class="pub has-thumb">
+        <a class="pub-thumb" href="https://doi.org/10.3389/fimmu.2019.02365">
+          <img src="images/pubs/cabrep2019.png" alt="Figure from Guo et al. 2019" onerror="this.remove()">
+        </a>
+        <div>
+          <div class="title"><a href="https://doi.org/10.3389/fimmu.2019.02365">cAb-Rep: A Database of Curated Antibody Repertoires for Exploring Antibody Diversity and Predicting Antibody Prevalence</a></div>
+          <div class="authors">Guo Y, <b>Chen K</b>, Kwong PD, Shapiro L, Sheng Z.</div>
+          <div class="venue"><i>Frontiers in Immunology</i>, 10:2365, 2019.</div>
+        </div>
       </div>
     </div>
 
     <div class="pub-group">
       <h3>Preprints</h3>
-      <div class="pub">
-        <div class="title"><a href="https://doi.org/10.1101/2025.05.21.25328040">Single-nucleus multiomics in brains from Hispanic individuals reveal APOE-ε4-driven disruption of focal adhesion signaling in the presence of cerebrovascular pathology</a></div>
-        <div class="authors">Yilmaz E, <b>Chen KW</b>, Cakir EÖ, Bhattarai P, Liu M, Ciener BL, Qiao M, Lantigua R, Medrano M, Rivera D, Piriz AL, De Jager P, Bartolini F, Ma Y, Teich AF, Lee AJ, Reyes-Dumeyer D, Vardarajan BN, Mayeux R, Kizil C.</div>
-        <div class="venue"><i>medRxiv</i>, 2025. <span class="badge">Under review</span></div>
+
+      <div class="pub has-thumb">
+        <a class="pub-thumb" href="https://doi.org/10.1101/2025.05.21.25328040">
+          <img src="images/pubs/yilmaz2025.png" alt="Figure from Yilmaz et al. 2025" onerror="this.remove()">
+        </a>
+        <div>
+          <div class="title"><a href="https://doi.org/10.1101/2025.05.21.25328040">Single-nucleus multiomics in brains from Hispanic individuals reveal APOE-ε4-driven disruption of focal adhesion signaling in the presence of cerebrovascular pathology</a></div>
+          <div class="authors">Yilmaz E, <b>Chen KW</b>, Cakir EÖ, Bhattarai P, Liu M, Ciener BL, Qiao M, Lantigua R, Medrano M, Rivera D, Piriz AL, De Jager P, Bartolini F, Ma Y, Teich AF, Lee AJ, Reyes-Dumeyer D, Vardarajan BN, Mayeux R, Kizil C.</div>
+          <div class="venue"><i>medRxiv</i>, 2025. <span class="badge">Under review</span></div>
+        </div>
       </div>
-      <div class="pub">
-        <div class="title"><a href="https://doi.org/10.1101/2025.02.24.639868">PLXNB1 and other signaling drives a pathologic astrocyte state contributing to cognitive decline in Alzheimer's Disease</a></div>
-        <div class="authors">Comandante-Lou N, Lama T, <b>Chen K</b>, Zhang J, Hu B, Liu S, Heuer S, Brennand KJ, Schneider J, Barnes L, Zhang B, Wang M, Zou H, Friedel RH, Ma Y, Young-Pearse T, Li A, Fujita M, Bennett D, Zhang Y, Menon V, Klein HU, Taga M, De Jager PL.</div>
-        <div class="venue"><i>bioRxiv</i>, 2025. <span class="badge">In revision</span></div>
+
+      <div class="pub has-thumb">
+        <a class="pub-thumb" href="https://doi.org/10.1101/2025.02.24.639868">
+          <img src="images/pubs/comandantelou2025.png" alt="Figure from Comandante-Lou et al. 2025" onerror="this.remove()">
+        </a>
+        <div>
+          <div class="title"><a href="https://doi.org/10.1101/2025.02.24.639868">PLXNB1 and other signaling drives a pathologic astrocyte state contributing to cognitive decline in Alzheimer's Disease</a></div>
+          <div class="authors">Comandante-Lou N, Lama T, <b>Chen K</b>, Zhang J, Hu B, Liu S, Heuer S, Brennand KJ, Schneider J, Barnes L, Zhang B, Wang M, Zou H, Friedel RH, Ma Y, Young-Pearse T, Li A, Fujita M, Bennett D, Zhang Y, Menon V, Klein HU, Taga M, De Jager PL.</div>
+          <div class="venue"><i>bioRxiv</i>, 2025. <span class="badge">In revision</span></div>
+        </div>
       </div>
-      <div class="pub">
-        <div class="title"><a href="https://doi.org/10.1101/2025.03.27.641500">A factor-based analysis of individual human microglia uncovers regulators of an Alzheimer-related transcriptional signature</a></div>
-        <div class="authors">Marshe VS, Tuddenham JF, <b>Chen K</b>, Chiu R, Haage VC, Ma Y, Lee AJ, Shneider NA, Agin-Liebes JP, Alcalay RN, Teich AF, Canoll P, Riley CS, Keene D, Schneider JA, Bennett DA, Menon V, Taga M, Klein HU, Olah M, Fujita M, Zhang Y, Sims PA, De Jager PL.</div>
-        <div class="venue"><i>bioRxiv</i>, 2025.</div>
+
+      <div class="pub has-thumb">
+        <a class="pub-thumb" href="https://doi.org/10.1101/2025.03.27.641500">
+          <img src="images/pubs/marshe2025.png" alt="Figure from Marshe et al. 2025" onerror="this.remove()">
+        </a>
+        <div>
+          <div class="title"><a href="https://doi.org/10.1101/2025.03.27.641500">A factor-based analysis of individual human microglia uncovers regulators of an Alzheimer-related transcriptional signature</a></div>
+          <div class="authors">Marshe VS, Tuddenham JF, <b>Chen K</b>, Chiu R, Haage VC, Ma Y, Lee AJ, Shneider NA, Agin-Liebes JP, Alcalay RN, Teich AF, Canoll P, Riley CS, Keene D, Schneider JA, Bennett DA, Menon V, Taga M, Klein HU, Olah M, Fujita M, Zhang Y, Sims PA, De Jager PL.</div>
+          <div class="venue"><i>bioRxiv</i>, 2025.</div>
+        </div>
       </div>
     </div>
 
