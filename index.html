@@ -101,7 +101,7 @@
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .tags span { background: var(--tag); padding: 2px 10px; border-radius: 6px; font-size: 14px; }
 
-    /* Timeline entries (education, experience) */
+    /* Timeline entries (education, experience, volunteering) */
     .entry {
       display: grid; grid-template-columns: 1fr auto; gap: 4px 16px;
       padding: 18px 0; border-top: 1px solid var(--line);
@@ -155,10 +155,24 @@
       display: flex; align-items: center; justify-content: center;
       width: 160px; aspect-ratio: 4 / 3; border-radius: 8px; overflow: hidden;
       background: var(--accent-soft); border: 1px solid var(--line);
-      color: var(--accent); font-size: 13px; font-weight: 600;
     }
     .pub-thumb:hover { text-decoration: none; border-color: var(--accent); }
     .pub-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Photography */
+    .interests p { margin: 0; }
+    .photo-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 16px;
+    }
+    .photo-grid .ph {
+      aspect-ratio: 4 / 3; border-radius: 8px; overflow: hidden;
+      background: var(--accent-soft); border: 1px solid var(--line);
+    }
+    .photo-grid img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.25s ease;
+    }
+    .photo-grid .ph:hover img { transform: scale(1.04); }
 
     footer {
       max-width: 920px; margin: 0 auto; padding: 24px 20px 40px;
@@ -174,6 +188,13 @@
       .nav-name { display: none; }
       .pub.has-thumb { grid-template-columns: 1fr; }
       .pub-thumb { width: 100%; max-width: 320px; }
+      /* Photos become one swipeable row on phones */
+      .photo-grid {
+        display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+        gap: 10px; margin-right: -20px; padding-right: 20px; scrollbar-width: none;
+      }
+      .photo-grid::-webkit-scrollbar { display: none; }
+      .photo-grid .ph { flex: 0 0 70%; scroll-snap-align: start; }
     }
   </style>
 </head>
@@ -187,6 +208,7 @@
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#publications">Publications</a>
+      <a href="#volunteering">Volunteering</a>
       <a href="#skills">Skills</a>
     </div>
   </div>
@@ -382,6 +404,30 @@
     </div>
   </section>
 
+  <!-- ============ VOLUNTEERING ============ -->
+  <section id="volunteering">
+    <h2>Volunteering</h2>
+
+    <div class="entry">
+      <h3>Port Jefferson EMS, Long Island, NY</h3>
+      <span class="date">Sep. 2020 – Feb. 2022</span>
+      <div class="sub">Emergency Medical Technician (EMT-B)</div>
+      <ul>
+        <li>Responded to emergency calls as a certified EMT, providing basic life support, patient assessment, and transport.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <h3>Homeless Shelter, Hackensack, NJ</h3>
+      <span class="date">Ongoing</span>
+      <div class="sub">Volunteer with EBCC</div>
+      <ul>
+        <li>Organize fundraising and food donation drives with my church community.</li>
+        <li>Cook and serve meals for shelter residents twice a year.</li>
+      </ul>
+    </div>
+  </section>
+
   <!-- ============ SKILLS ============ -->
   <section id="skills">
     <h2>Skills</h2>
@@ -390,6 +436,27 @@
       <div class="skill-row"><b>ML and Statistics</b><div class="tags"><span>PyTorch</span><span>scikit-learn</span><span>Statistical modeling</span><span>Dimensionality reduction</span></div></div>
       <div class="skill-row"><b>Genomics</b><div class="tags"><span>scRNA-seq</span><span>snRNA-seq</span><span>Seurat</span><span>Scanpy</span></div></div>
       <div class="skill-row"><b>Tools</b><div class="tags"><span>Git</span><span>HPC / SLURM</span><span>Docker</span><span>Jupyter</span></div></div>
+    </div>
+  </section>
+
+  <!-- ============ OUTSIDE OF WORK ============ -->
+  <!-- Photos: upload to images/photos/ as photo1.jpg ... photo10.jpg.
+       Resize to about 1200px wide and under 300 KB each.
+       Until a file exists, a tinted placeholder box shows instead. -->
+  <section id="interests" class="interests">
+    <h2>Outside of Work</h2>
+    <p>Outside of data, I spend a lot of my time behind a camera. A few favorites:</p>
+    <div class="photo-grid">
+      <div class="ph"><img src="images/photos/photo1.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph"><img src="images/photos/photo2.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph"><img src="images/photos/photo3.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph"><img src="images/photos/photo4.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph"><img src="images/photos/photo5.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph"><img src="images/photos/photo6.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph"><img src="images/photos/photo7.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph"><img src="images/photos/photo8.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph"><img src="images/photos/photo9.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph"><img src="images/photos/photo10.jpg" alt="Photograph by Kevin Chen" loading="lazy" onerror="this.remove()"></div>
     </div>
   </section>
 
